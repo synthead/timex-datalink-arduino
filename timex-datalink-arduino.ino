@@ -10,7 +10,7 @@
 #define PING_EXPIRE_MS 1000
 
 unsigned long last_ping_ms = 0;
-boolean send_handshake = false;
+bool send_handshake = false;
 
 void led_emit_0() {
   digitalWrite(LED_PIN, HIGH);
