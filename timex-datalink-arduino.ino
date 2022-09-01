@@ -3,14 +3,15 @@
 #define LED_ON_MS 35
 #define LED_OFF_MS 460
 
-#define HANDSHAKE_STOP 'U'
-#define HANDSHAKE_START '?'
+#define COMMAND_PING 'x'
+#define COMMAND_QUERY '?'
+#define COMMAND_TRANSMIT 'U'
 #define HANDSHAKE_PAYLOAD "M764"
 
 #define PING_EXPIRE_MS 1000
 
 unsigned long last_ping_ms = 0;
-bool send_handshake = true;
+bool command_mode = true;
 
 void led_emit_0() {
   digitalWrite(LED_PIN, HIGH);
@@ -32,29 +33,41 @@ void led_emit_byte(uint8_t serial_byte) {
   }
 }
 
-void emulate_notebook_adapter(uint8_t serial_byte) {
+void emulate_notebook_adapter_command(uint8_t serial_byte) {
+  switch(serial_byte) {
+    case COMMAND_PING:
+      Serial.write(COMMAND_PING);
+
+      break;
+
+    case COMMAND_QUERY:
+      Serial.print(HANDSHAKE_PAYLOAD);
+      Serial.write(0);
+
+      break;
+
+    case COMMAND_TRANSMIT:
+      Serial.write(COMMAND_TRANSMIT);
+      command_mode = false;
+
+      break;
+  }
+}
+
+void emulate_notebook_adapter_data(uint8_t serial_byte) {
   if (millis() - last_ping_ms > PING_EXPIRE_MS) {
-    send_handshake = true;
+    command_mode = true;
   }
 
   Serial.write(serial_byte);
 
-  switch(serial_byte) {
-    case HANDSHAKE_START:
-      if (send_handshake) {
-        Serial.print(HANDSHAKE_PAYLOAD);
-        Serial.write(0);
-      }
-
-      return;
-
-    case HANDSHAKE_STOP:
-      send_handshake = false;
-
-      break;
-  }
-
   last_ping_ms = millis();
+}
+
+void emulate_notebook_adapter(uint8_t serial_byte) {
+  void(*function)(uint8_t) = command_mode ? emulate_notebook_adapter_command : emulate_notebook_adapter_data;
+
+  function(serial_byte);
 }
 
 void setup() {
