@@ -6,12 +6,12 @@
 #define COMMAND_TRANSMIT 'U'
 #define COMMAND_QUERY_PAYLOAD "M764"
 
-#define PING_EXPIRE_MS 1000
+#define DATA_MODE_TIMEOUT_MS 1000
 
 #include <Arduino.h>
 
 namespace NotebookAdapter {
-  unsigned long last_ping_ms = 0;
+  unsigned long last_data_ms = 0;
   bool command_mode = true;
 
   void emulate_command_mode(uint8_t serial_byte) {
@@ -36,13 +36,13 @@ namespace NotebookAdapter {
   }
 
   void emulate_data_mode(uint8_t serial_byte) {
-    if (millis() - last_ping_ms > PING_EXPIRE_MS) {
+    if (millis() - last_data_ms > DATA_MODE_TIMEOUT_MS) {
       command_mode = true;
     }
 
     Serial.write(serial_byte);
 
-    last_ping_ms = millis();
+    last_data_ms = millis();
   }
 
   void emulate(uint8_t serial_byte) {
