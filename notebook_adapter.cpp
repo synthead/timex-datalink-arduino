@@ -1,6 +1,3 @@
-#ifndef NOTEBOOK_ADAPTER_H
-#define NOTEBOOK_ADAPTER_H
-
 #define COMMAND_PING 'x'
 #define COMMAND_QUERY '?'
 #define COMMAND_TRANSMIT 'U'
@@ -51,5 +48,3 @@ namespace NotebookAdapter {
     function(serial_byte);
   }
 }
-
-#endif
