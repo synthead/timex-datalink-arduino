@@ -1,7 +1,7 @@
 #define LED_PIN 13
 
-#define LED_ON_MS 35
-#define LED_OFF_MS 460
+#define LED_ON_MS 15
+#define LED_OFF_MS 450
 
 #include <Arduino.h>
 
