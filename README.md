@@ -10,8 +10,8 @@ This project is not dependent on any specific Arduino board, although it is desi
 
 The early Datalink watches receives data over light, and the original intent was to take advantage of [a flashing electron beam on a CRT](https://www.youtube.com/watch?v=GCHHzw4s5W4&t=1168s).  Timex also offered a Notebook Adapter accessory intended for mobile users at the time, which replicates the data sent from a CRT using a single LED:
 
-![image](https://user-images.githubusercontent.com/820984/187865523-3627066b-3a8b-4101-8ddf-83fc5c8493d9.png)
+![image](https://user-images.githubusercontent.com/820984/203725872-8dc8ec66-57bd-444a-9c36-4138955c83e5.png)
 
 The Notebook Adapter is a serial device with a proprietary protocol that was reverse-engineered for this project.  With the Arduino device present, the original [Timex Datalink software](https://assets.timex.com/html/data_link_software.html) can be configured to use the Notebook Adapter and send data to your watch:
 
-![image](https://user-images.githubusercontent.com/820984/187858116-41eeaa2b-e134-4b31-98ab-60f1f2b0d362.png)
+![image](https://user-images.githubusercontent.com/820984/203725992-728c8586-0787-4d99-8226-c45812ee6a1b.png)
