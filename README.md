@@ -15,3 +15,13 @@ The early Datalink watches receives data over light, and the original intent was
 The Notebook Adapter is a serial device with a proprietary protocol that was reverse-engineered for this project.  With the Arduino device present, the original [Timex Datalink software](https://assets.timex.com/html/data_link_software.html) can be configured to use the Notebook Adapter and send data to your watch:
 
 ![image](https://user-images.githubusercontent.com/820984/203725992-728c8586-0787-4d99-8226-c45812ee6a1b.png)
+
+## Using an external LED
+
+The small onboard LED allows a Timex Datalink 150 watch to sync from a few inches away.  With an external LED, it is possible to sync your watch from several feet away.
+
+An LED can be added tidily to the Teensy LC by soldering an LED cathode (short leg) to the ground pin near the PROG pin, then connecting the anode (long leg) to pin 13 with a resistor, as pictured below.
+
+![image](https://user-images.githubusercontent.com/820984/203727953-efcffb19-0522-4573-bdb4-779b6bb5a847.png)
+
+I discovered that the best performance is obtained by using white LEDs, but every color I tested worked without problems.  The LED pictured above is a white 20mA/3-3.2V 14000mcd LED paired with a stiff ¼W 22Ω resistor.
