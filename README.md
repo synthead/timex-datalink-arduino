@@ -6,6 +6,7 @@ This Notebook Adapter emulator is tested to be compatible with:
 
 - [Timex Data Link® Software 2.1d](https://assets.timex.com/html/data_link_software.html)
 - [Timex Ironman Triathlon® Data Link® 2.01](https://assets.timex.com/html/data_link_software.html)
+- [Timex BeepwearPRO 1.03](https://assets.timex.com/beepwear)
 - [DSI Electronics e-BRAIN v1.1.6](https://archive.org/details/ebrain-1.1.6)
 - [timex\_datalink\_client Ruby library](https://github.com/synthead/timex_datalink_client)
 
