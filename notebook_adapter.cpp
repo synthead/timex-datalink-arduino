@@ -1,10 +1,12 @@
 #define COMMAND_QUERY '?'
+#define COMMAND_FAST 'V'
 #define COMMAND_TRANSMIT 'U'
 #define COMMAND_QUERY_PAYLOAD "107\r M764 rev 764100"
 
 #define DATA_MODE_TIMEOUT_MS 1000
 
 #include <Arduino.h>
+#include "led_blaster.h"
 
 namespace NotebookAdapter {
   unsigned long last_data_ms = 0;
@@ -12,6 +14,7 @@ namespace NotebookAdapter {
 
   void emulate(uint8_t serial_byte) {
     if (millis() - last_data_ms > DATA_MODE_TIMEOUT_MS) {
+      LedBlaster::enable_fast_mode(false);
       command_mode = true;
     }
 
@@ -22,6 +25,12 @@ namespace NotebookAdapter {
         if (command_mode) {
           Serial.print(COMMAND_QUERY_PAYLOAD);
           Serial.write(0);
+        }
+
+        break;
+      case COMMAND_FAST:
+        if (command_mode) {
+          LedBlaster::enable_fast_mode(true);
         }
 
         break;
