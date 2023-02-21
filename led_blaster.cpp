@@ -1,25 +1,42 @@
 #define LED_PIN 13
 
-#define LED_ON_MS 15
-#define LED_OFF_MS 450
+#define LED_ON_MS_NORMAL 15
+#define LED_OFF_MS_NORMAL 450
+
+#define LED_ON_MS_FAST 6
+#define LED_OFF_MS_FAST 408
 
 #include <Arduino.h>
 
 namespace LedBlaster {
+  uint16_t led_on_ms;
+  uint16_t led_off_ms;
+
+  void enable_fast_mode(bool fast_mode_enabled) {
+    if (fast_mode_enabled) {
+      led_on_ms = LED_ON_MS_FAST;
+      led_off_ms = LED_OFF_MS_FAST;
+    } else {
+      led_on_ms = LED_ON_MS_NORMAL;
+      led_off_ms = LED_OFF_MS_NORMAL;
+    }
+  }
+
   void setup() {
     pinMode(LED_PIN, OUTPUT);
+    enable_fast_mode(false);
   }
 
   void emit_0() {
     digitalWrite(LED_PIN, HIGH);
-    delayMicroseconds(LED_ON_MS);
+    delayMicroseconds(led_on_ms);
 
     digitalWrite(LED_PIN, LOW);
-    delayMicroseconds(LED_OFF_MS);
+    delayMicroseconds(led_off_ms);
   }
 
   void emit_1() {
-    delayMicroseconds(LED_ON_MS + LED_OFF_MS);
+    delayMicroseconds(led_on_ms + led_off_ms);
   }
 
   void emit_byte(uint8_t serial_byte) {
