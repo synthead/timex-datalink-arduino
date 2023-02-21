@@ -8,9 +8,16 @@
 
 #include <Arduino.h>
 
+#include "led_blaster.h"
+
 namespace LedBlaster {
   uint16_t led_on_ms;
   uint16_t led_off_ms;
+
+  void setup() {
+    pinMode(LED_PIN, OUTPUT);
+    enable_fast_mode(false);
+  }
 
   void enable_fast_mode(bool fast_mode_enabled) {
     if (fast_mode_enabled) {
@@ -20,11 +27,6 @@ namespace LedBlaster {
       led_on_ms = LED_ON_MS_NORMAL;
       led_off_ms = LED_OFF_MS_NORMAL;
     }
-  }
-
-  void setup() {
-    pinMode(LED_PIN, OUTPUT);
-    enable_fast_mode(false);
   }
 
   void emit_0() {

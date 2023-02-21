@@ -6,7 +6,9 @@
 #define DATA_MODE_TIMEOUT_MS 1000
 
 #include <Arduino.h>
+
 #include "led_blaster.h"
+#include "notebook_adapter.h"
 
 namespace NotebookAdapter {
   unsigned long last_data_ms = 0;
