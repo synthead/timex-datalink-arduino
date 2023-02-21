@@ -26,7 +26,7 @@ namespace NotebookAdapter {
 
         break;
       case COMMAND_TRANSMIT:
-        command_mode = true;
+        command_mode = false;
 
         break;
     }
