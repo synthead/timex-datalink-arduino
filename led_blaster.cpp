@@ -8,6 +8,8 @@
 
 #include <Arduino.h>
 
+#include "led_blaster.h"
+
 namespace LedBlaster {
   uint16_t led_on_ms;
   uint16_t led_off_ms;
