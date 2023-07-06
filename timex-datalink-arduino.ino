@@ -10,7 +10,7 @@ void loop() {
   int serial_byte = Serial.read();
 
   if (serial_byte != -1) {
-    LedBlaster::emit_byte(serial_byte);
     NotebookAdapter::emulate(serial_byte);
+    LedBlaster::emit_byte(serial_byte);
   }
 }
