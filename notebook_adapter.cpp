@@ -26,7 +26,7 @@ namespace NotebookAdapter {
       case COMMAND_QUERY:
         if (command_mode) {
           Serial.print(COMMAND_QUERY_PAYLOAD);
-          Serial.write(0);
+          Serial.write((byte)0);
         }
 
         break;
