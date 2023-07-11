@@ -15,7 +15,7 @@ This project is not dependent on any specific Arduino board, although it has bee
 - [Teensy LC](https://www.pjrc.com/teensy/teensyLC.html)
 - [Raspberry Pi Pico](https://www.raspberrypi.com/products/raspberry-pi-pico)
 
-These boards have USB serial and an onboard LED, so they can be used as-is without any external components:
+These boards have USB serial interfaces and onboard LEDs, so they can be used as-is without any external components:
 
 ![image](https://user-images.githubusercontent.com/820984/187859185-94f02df7-64f5-4bb3-bf00-12621f5f3b38.png)
 
