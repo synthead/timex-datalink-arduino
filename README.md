@@ -10,7 +10,12 @@ This Notebook Adapter emulator is tested to be compatible with:
 - [DSI Electronics e-BRAIN v1.1.6](https://archive.org/details/ebrain-1.1.6)
 - [timex\_datalink\_client Ruby library](https://github.com/synthead/timex_datalink_client)
 
-This project is not dependent on any specific Arduino board, although it is designed with the [Teensy LC](https://www.pjrc.com/teensy/teensyLC.html) in mind.  The Teensy LC has USB serial and an onboard LED, so the board can be used as-is without any external components:
+This project is not dependent on any specific Arduino board, although it has been tested to work with these devices:
+
+- [Teensy LC](https://www.pjrc.com/teensy/teensyLC.html)
+- [Raspberry Pi Pico](https://www.raspberrypi.com/products/raspberry-pi-pico)
+
+These boards have USB serial interfaces and onboard LEDs, so they can be used as-is without any external components:
 
 ![image](https://user-images.githubusercontent.com/820984/187859185-94f02df7-64f5-4bb3-bf00-12621f5f3b38.png)
 

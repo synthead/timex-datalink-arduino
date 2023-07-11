@@ -1,4 +1,4 @@
-#define LED_PIN 13
+#define LED_PIN LED_BUILTIN
 
 #define LED_ON_MS_NORMAL 15
 #define LED_OFF_MS_NORMAL 450
